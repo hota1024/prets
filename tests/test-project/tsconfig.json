@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "types": ["type.d.ts"]
+  },
+  "includes": [
+    "src/**/*.tsx?"
+  ]
+}
