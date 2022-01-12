@@ -1,8 +1,9 @@
 /**
  * Point type.
  *
- * @pretsType
- * @pretsSubType [number(x), number(y)]
+ * @pretsType Point
+ * @pretsTypeNormalize ['$.x', '$.y']
+ * @pretsTypeCheck (typeof $.x === 'number' && typeof $.y === 'number')
  */
 export type Point = {
   x: number
@@ -10,36 +11,32 @@ export type Point = {
 }
 
 /**
- * normalize a point.
- *
- * @param point point object.
- * @pretsTypeNormalizerOf Point
+ * @pretsSet Point
+ * @pretsSetType (point: Point)
  */
-export const normalizePoint = (point: Point): [number, number] => {
-  return [point.x, point.y]
-}
 
 /**
- * returns whether the given object is a point.
- *
- * @param point point object.
- * @pretsTypeCheckerOf Point
+ * @pretsSet XY
+ * @pretsSetType (x: number, y: number)
  */
-export const isPoint = (point: unknown): point is Point => {
-  return typeof point['x'] === 'number' && typeof point['y'] === 'number'
-}
 
-export interface Drawerable {
+/**
+ * @pretsSet XYArray
+ * @pretsSetType (point: [number, number])
+ */
+
+/**
+ * @pretsPattern Pointable
+ * @pretsPatternSets [Point, XY, XYArray]
+ */
+
+class Drawer {
   /**
-   * draw line.
-   *
-   * @pretsFn [Point(point: start, x: sx, y: sy), Point(point: end, x: ex, y: ey)]
+   * @pretsMethod line
+   * @pretsMethodArg [point: start, x: sx, y: sy]: Pointable
+   * @pretsMethodArg [point: end, x: ex, y: ey]: Pointable
    */
-  line(sx: number, sy: number, ex: number, ey: number): void
-}
-
-export class Drawer implements Drawerable {
-  line(sx: number, sy: number, ex: number, ey: number): void {
-    console.log('rect', { sx, sy, ex, ey })
+  private $line(sx: number, sy: number, ex: number, ey: number) {
+    // ...
   }
 }
