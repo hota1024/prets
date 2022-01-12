@@ -21,16 +21,11 @@ export class LeftBracket extends Token {}
 export class RightBracket extends Token {}
 
 /**
- * SingleQuote token class(`]`).
- */
-export class SingleQuote extends Token {}
-
-/**
- * Comma token class(`]`).
+ * Comma token class(`,`).
  */
 export class Comma extends Token {}
 
 /**
- * Colon token class(`]`).
+ * Colon token class(`:`).
  */
 export class Colon extends Token {}
