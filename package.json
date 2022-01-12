@@ -58,6 +58,7 @@
     }
   },
   "dependencies": {
+    "chalk": "^5.0.0",
     "ts-morph": "^13.0.2"
   }
 }
