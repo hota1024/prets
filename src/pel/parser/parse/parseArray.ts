@@ -1,4 +1,3 @@
-import { tokenize } from '@/pel/tokenizer'
 import {
   Comma,
   Ident,
@@ -69,9 +68,3 @@ export const parseArray = (walker: Walker<Token>): Node => {
 
   return new ArrayNode(items, span)
 }
-
-const source = '[test,"test"]'
-const tokens = tokenize(source)
-const walker = new Walker(tokens)
-const node = parseArray(walker)
-console.log(node)
