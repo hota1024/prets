@@ -1,5 +1,5 @@
 import { Span } from '@/pel/Span'
-import { LocatedError } from './LocatedError'
+import { LocatedError } from '../../errors/LocatedError'
 
 /**
  * UnterminatedStrError class.

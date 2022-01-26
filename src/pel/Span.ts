@@ -21,4 +21,11 @@ export class Span {
       Math.max(this.end, span.end)
     )
   }
+
+  /**
+   * clone this span.
+   */
+  clone(): Span {
+    return new Span(this.start, this.end)
+  }
 }

@@ -12,17 +12,17 @@ export type Point = {
 
 /**
  * @pretsSet Point
- * @pretsSetType (point: Point)
+ * @pretsSetTypes (point: Point)
  */
 
 /**
  * @pretsSet XY
- * @pretsSetType (x: number, y: number)
+ * @pretsSetTypes (x: number, y: number)
  */
 
 /**
  * @pretsSet XYArray
- * @pretsSetType (point: [number, number])
+ * @pretsSetTypes (point: [number, number])
  */
 
 /**
