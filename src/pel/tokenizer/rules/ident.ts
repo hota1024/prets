@@ -2,7 +2,7 @@ import { Span } from '@/pel/Span'
 import { Ident } from '../tokens'
 import { Rule } from './Rule'
 
-const IDENT_REGEXP = /^([a-z][a-z0-9]+)/i
+const IDENT_REGEXP = /^([a-z][a-z0-9]*)/i
 
 /**
  * tokenize identifier.

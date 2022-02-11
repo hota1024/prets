@@ -1,12 +1,10 @@
 import { Span } from '@/pel/Span'
-import { IdentNode } from './IdentNode'
 import { Node } from './Node'
-import { StrNode } from './StrNode'
 
 /**
  * ArrayItemNode type.
  */
-export type ArrayItemNode = StrNode | IdentNode
+export type ArrayItemNode = Node
 
 /**
  * ArrayNode class.

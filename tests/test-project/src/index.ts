@@ -11,18 +11,27 @@ export type Point = {
 }
 
 /**
+ * XYArray type.
+ *
+ * @pretsType XYArray
+ * @pretsTypeNormalize ['$[0]', '$[1]']
+ * @pretsTypeCheck (Array.isArray($) && $.length === 2 &&typeof $[0] === 'number' && typeof $[1] === 'number')
+ */
+export type XYArray = [number, number]
+
+/**
  * @pretsSet Point
- * @pretsSetTypes (point: Point)
+ * @pretsSetArgs (point: Point)
  */
 
 /**
  * @pretsSet XY
- * @pretsSetTypes (x: number, y: number)
+ * @pretsSetArgs (x: number, y: number)
  */
 
 /**
  * @pretsSet XYArray
- * @pretsSetTypes (point: [number, number])
+ * @pretsSetArgs (point: XYArray)
  */
 
 /**

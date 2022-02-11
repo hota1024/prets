@@ -1,4 +1,5 @@
 import chalk from 'chalk'
+import { Span } from '../Span'
 import { UnexpectedCharError } from './errors/UnexpectedCharError'
 import { UnterminatedStrError } from './errors/UnterminatedStrError'
 import { ident } from './rules/ident'
@@ -6,6 +7,7 @@ import { Rule } from './rules/Rule'
 import { str } from './rules/str'
 import { symbols } from './rules/symbols'
 import { Ident, Str, Token } from './tokens'
+import { End } from './tokens/End'
 
 /**
  * tokenize source code.
@@ -39,6 +41,8 @@ export const tokenize = (source: string): Token[] => {
       throw new UnexpectedCharError(pos, source[pos])
     }
   }
+
+  tokens.push(new End(new Span(source.length, source.length)))
 
   return tokens
 }

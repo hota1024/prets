@@ -1,3 +1,4 @@
+import { tokenize } from '@/pel/tokenizer'
 import {
   Comma,
   Ident,
@@ -19,7 +20,10 @@ import { StrNode } from '../nodes/StrNode'
  *
  * @param walker walker.
  */
-export const parseArray = (walker: Walker<Token>): Node => {
+export const parseArray = (
+  walker: Walker<Token>,
+  itemParser: (walker: Walker<Token>) => Node
+): Node => {
   const leftBracket = walker.current()
 
   if (!(leftBracket instanceof LeftBracket)) {
@@ -39,13 +43,8 @@ export const parseArray = (walker: Walker<Token>): Node => {
       break
     }
 
-    if (token instanceof Str) {
-      items.push(new StrNode(token.str, token.span))
-    } else if (token instanceof Ident) {
-      items.push(new IdentNode(token.ident, token.span))
-    } else {
-      throw new UnexpectedTokenError(token, [Str, Ident])
-    }
+    const itemNode = itemParser(walker)
+    items.push(itemNode)
 
     if (walker.isLast()) {
       throw new UnterminatedArrayLiteralError(span)
@@ -68,3 +67,17 @@ export const parseArray = (walker: Walker<Token>): Node => {
 
   return new ArrayNode(items, span)
 }
+
+const tokens = tokenize('[ident, ident, indent]')
+const walker = new Walker(tokens)
+console.log(
+  parseArray(walker, (walker) => {
+    const ident = walker.current()
+    if (!(ident instanceof Ident)) {
+      throw new UnexpectedTokenError(ident, [Ident])
+    }
+    walker.next()
+
+    return new IdentNode(ident.ident, ident.span)
+  })
+)
